@@ -9,15 +9,15 @@ public abstract class Offer {
         this.expirationDate = expirationDate;
     }
 
-    private boolean isExpired() {
-        return LocalDate.now().isAfter(expirationDate);
+    private boolean notExpired() {
+        return LocalDate.now().isBefore(expirationDate);
     }
 
-    protected abstract void chargePoints(Check check);
+    protected abstract void calcPoints(Check check);
 
     void apply(Check check) {
-        if (!isExpired()) {
-            chargePoints(check);
+        if (notExpired()) {
+            calcPoints(check);
         }
     }
 }

@@ -26,8 +26,8 @@ public class CheckoutService {
         for (Offer offer : offers) {
             offer.apply(check);
         }
-
         check = null;
+
         return closedCheck;
     }
 
