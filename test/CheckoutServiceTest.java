@@ -86,6 +86,7 @@ public class CheckoutServiceTest {
 
         checkoutService.useOffer(new FactorByCategoryOffer(Category.MILK, 2));
         Check check = checkoutService.closeCheck();
+        checkoutService.useOffer(new FactorByCategoryOffer(Category.MILK, 2));
 
         assertThat(check.getTotalPoints(), is(31));
     }
