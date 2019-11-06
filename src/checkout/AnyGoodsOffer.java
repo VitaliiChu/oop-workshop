@@ -1,16 +1,19 @@
 package checkout;
 
-public class AnyGoodsOffer extends Offer {
-    public final int totalCost;
-    public final int points;
+import java.time.LocalDate;
 
-    public AnyGoodsOffer(int totalCost, int points) {
+public class AnyGoodsOffer extends Offer {
+    private final int totalCost;
+    private final int points;
+
+    public AnyGoodsOffer(LocalDate expirationDate, int totalCost, int points) {
+        super(expirationDate);
         this.totalCost = totalCost;
         this.points = points;
     }
 
     @Override
-    public void apply(Check check) {
+    protected void chargePoints(Check check) {
         if (this.totalCost <= check.getTotalCost())
             check.addPoints(this.points);
     }
