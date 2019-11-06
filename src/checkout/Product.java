@@ -2,7 +2,7 @@ package checkout;
 
 public class Product {
     final int price;
-    final String name;
+    private final String name;
     Category category;
 
     public Product(int price, String name, Category category) {
@@ -13,5 +13,9 @@ public class Product {
 
     public Product(int price, String name) {
         this(price, name, null);
+    }
+
+    public String getName() {
+        return name;
     }
 }

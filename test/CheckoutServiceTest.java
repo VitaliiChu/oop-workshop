@@ -141,4 +141,15 @@ public class CheckoutServiceTest {
 
         assertThat(check.getTotalPoints(), is(17));
     }
+
+    @Test
+    void useOffer__addPointsForSpecificProduct() {
+        checkoutService.addProduct(milk_7);
+        checkoutService.useOffer(new MilkOffer(expirationDateAfter, milk_7, 2));
+        checkoutService.addProduct(bred_3);
+
+        Check check = checkoutService.closeCheck();
+
+        assertThat(check.getTotalPoints(), is(12));
+    }
 }
