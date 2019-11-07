@@ -13,7 +13,7 @@ public class AnyGoodsOffer extends Offer {
     }
 
     @Override
-    protected void calcPoints(Check check) {
+    protected void scorePoints(Check check) {
         if (this.totalCost <= check.getTotalCost())
             check.addPoints(this.points);
     }

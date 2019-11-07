@@ -13,11 +13,11 @@ public abstract class Offer {
         return LocalDate.now().isBefore(expirationDate);
     }
 
-    protected abstract void calcPoints(Check check);
+    protected abstract void scorePoints(Check check);
 
     void apply(Check check) {
         if (notExpired()) {
-            calcPoints(check);
+            scorePoints(check);
         }
     }
 }

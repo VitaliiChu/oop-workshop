@@ -23,6 +23,10 @@ public class Check {
         return getTotalCost() + points;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
     void addPoints(int points) {
         this.points += points;
     }
