@@ -14,10 +14,12 @@ public abstract class Offer {
     }
 
     protected abstract void scorePoints(Check check);
+    protected abstract void getDiscount(Check check);
 
     void apply(Check check) {
         if (notExpired()) {
             scorePoints(check);
+            getDiscount(check);
         }
     }
 }

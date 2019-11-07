@@ -17,4 +17,9 @@ public class FactorByCategoryOffer extends Offer {
         int points = check.getCostByCategory(this.category);
         check.addPoints(points * (this.factor - 1));
     }
+
+    @Override
+    protected void getDiscount(Check check) {
+
+    }
 }

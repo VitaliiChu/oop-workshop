@@ -23,7 +23,7 @@ public class Check {
         return getTotalCost() + points;
     }
 
-    public List<Product> getProducts() {
+    List<Product> getProducts() {
         return products;
     }
 

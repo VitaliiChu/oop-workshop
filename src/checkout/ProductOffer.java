@@ -22,4 +22,9 @@ public class ProductOffer extends Offer {
             }
         }
     }
+
+    @Override
+    protected void getDiscount(Check check) {
+
+    }
 }

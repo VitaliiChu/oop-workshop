@@ -14,6 +14,7 @@ public class CheckoutServiceTest {
     private Product bred_3;
     private LocalDate tomorrow;
     private LocalDate yesterday;
+    private int discountProcent;
 
     @BeforeEach
     void setUp() {
@@ -24,6 +25,7 @@ public class CheckoutServiceTest {
         bred_3 = new Product(3, "Bred");
         tomorrow = LocalDate.now().plusDays(1);
         yesterday = LocalDate.now().minusDays(1);
+        discountProcent = 50;
     }
 
     @Test
@@ -149,5 +151,15 @@ public class CheckoutServiceTest {
         checkoutService.addProduct(bred_3);
         Check check = checkoutService.closeCheck();
         assertThat(check.getTotalPoints(), is(12));
+    }
+
+    @Test
+    void useOffer__applyDiscount() {
+        checkoutService.addProduct(milk_7);
+        checkoutService.addProduct(bred_3);
+        checkoutService.useOffer(new DiscountOffer(tomorrow, milk_7, discountProcent));
+
+        Check check = checkoutService.closeCheck();
+        assertThat(check.getTotalCost(), is(6));
     }
 }

@@ -1,7 +1,7 @@
 package checkout;
 
 public class Product {
-    final int price;
+    int price;
     private final String name;
     Category category;
 
@@ -15,7 +15,7 @@ public class Product {
         this(price, name, null);
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 }

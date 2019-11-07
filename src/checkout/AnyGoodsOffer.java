@@ -17,4 +17,9 @@ public class AnyGoodsOffer extends Offer {
         if (this.totalCost <= check.getTotalCost())
             check.addPoints(this.points);
     }
+
+    @Override
+    protected void getDiscount(Check check) {
+
+    }
 }
