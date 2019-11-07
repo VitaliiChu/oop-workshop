@@ -10,11 +10,12 @@ import static org.hamcrest.Matchers.is;
 public class CheckoutServiceTest {
 
     private Product milk_7;
+    private Product milk_8;
     private CheckoutService checkoutService;
     private Product bred_3;
     private LocalDate tomorrow;
     private LocalDate yesterday;
-    private int discountProcent;
+    private Discount milkDiscount;
 
     @BeforeEach
     void setUp() {
@@ -22,10 +23,11 @@ public class CheckoutServiceTest {
         checkoutService.openCheck();
 
         milk_7 = new Product(7, "Milk", Category.MILK);
+        milk_8 = new Product(8, "Milk", Category.MILK);
         bred_3 = new Product(3, "Bred");
         tomorrow = LocalDate.now().plusDays(1);
         yesterday = LocalDate.now().minusDays(1);
-        discountProcent = 50;
+        milkDiscount = new Discount(milk_7, 50);
     }
 
     @Test
@@ -103,5 +105,16 @@ public class CheckoutServiceTest {
         checkoutService.useOffer(new BonusOffer(tomorrow, new CostByCategory(Category.MILK, 10), new Factor(Category.MILK, 2)));
         check = checkoutService.closeCheck();
         assertThat(check.getTotalPoints(), is(10));
+    }
+
+    @Test
+    void useOffer__addOfferDiscount() {
+        checkoutService.addProduct(milk_8);
+        checkoutService.addProduct(milk_8);
+        checkoutService.addProduct(bred_3);
+
+        checkoutService.useOffer(new DiscountOffer(tomorrow, new TotalCost(7), new Procent(milkDiscount)));
+        Check check = checkoutService.closeCheck();
+        assertThat(check.getTotalPoints(), is(11));
     }
 }

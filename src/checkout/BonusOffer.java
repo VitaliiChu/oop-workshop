@@ -12,7 +12,6 @@ public class BonusOffer extends Offer {
         this.reward = reward;
     }
 
-
     @Override
     void apply(Check check) {
         if (notExpired() && condition.isAllowed(check)) {

@@ -1,5 +1,5 @@
 package checkout;
 
 public interface DiscountRule {
-    int calcDiscount(Check check);
+    void calcDiscount(Check check);
 }
